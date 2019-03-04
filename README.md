@@ -181,6 +181,26 @@ html {
 
 注意：各个浏览器对于宽高的解析也不相同，大家可以自己搜索一下。如 <http://www.webhek.com/post/css-100-percent-height.html>
 
+总之当你对html这个根元素添加 `height:100%`的时候，你通过控制台审查元素会发现，它会撑满这个视口高度区域！
+
+![1551719490206](img/00/1551719490206.png)
+
+> 滚动条的宽度可不是html元素的一部分
+>
+> 还有计算出来视口大小很有意思：
+>
+> ![1551719798508](img/00/1551719798508.png)
+>
+> 还有一个问题就是图中出现垂直滚动条的问题，如果咩有对body元素添加 `height:100%;`的话，那么是不会出现滚动条的，而如果添加上了的话，是会出现的，所以这是什么原因呢？
+>
+> 因为chrome的body元素有默认的 `margin:8px;`啊！当你设置为0的时候，就没有滚动条了！基于盒子是默认的 `box-sizing: content-box;`，所以当你body有margin的时候，显然body元素撑高了16px，而固定的视口高度只有247px，所以溢出的16px就导致滚动条的出现了！
+>
+> 总之body元素这个盒子的默认高度为16px+270px=286px
+>
+> 有一点需要注意的是，我即便弄成是`box-sizing: border-box;`，这个滚动条还是会存在的，我原以为会让这个body元素的内容高度内缩16px，不过我想了想，好像是padding才会让这个盒子内容缩小呀，而margin是不会的：
+>
+> ![1551720891959](img/00/1551720891959.png)
+
 还有一个细节就是：
 
 <https://jsbin.com/rekabumeze/edit?html,css,output>
@@ -240,4 +260,8 @@ padding-top相对的是父元素的宽，而不是高……也就是说：
 **➹：**[html,body高度100%的作用-云栖社区-阿里云](https://yq.aliyun.com/articles/559106)
 
 **➹：**[详述css中的百分比值 - 庭院茶 - SegmentFault 思否](https://segmentfault.com/a/1190000000590998)
+
+**➹：**[前端小知识--为什么你写的height:100%不起作用？ - 知其所以然——前端 - SegmentFault 思否](https://segmentfault.com/a/1190000012707337)
+
+**➹：**[javascript - 各浏览器滚动条默认宽度是多少？ - SegmentFault 思否](https://segmentfault.com/q/1010000004817695)
 
