@@ -1,0 +1,41 @@
+/* css reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* common css, 通用样式，如.layout, .clearfix等，还有通用组件样式，如.btn, .footer等*/
+
+/* page css */
+
+/* 第定义基调 */
+
+body {
+  font-size: 12px;
+  line-height: 1.2;
+  /* 这个背景色用了与编辑器一样的背景色 */
+  background-color: #fffbe8;
+}
+
+/* 实现footer置底布局 */
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
