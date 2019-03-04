@@ -1,0 +1,22 @@
+{
+  "name": "douban-movie",
+  "version": "1.0.0",
+  "description": "--- typora-copy-images-to: img\\00 ---",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ppambler/douban-movie.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ppambler/douban-movie/issues"
+  },
+  "homepage": "https://github.com/ppambler/douban-movie#readme",
+  "dependencies": {
+    "eruda": "^1.5.4"
+  }
+}
