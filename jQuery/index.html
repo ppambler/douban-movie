@@ -44,15 +44,18 @@
     function template() {
       return `<div class="item">
         <a href="#">
-          <div class="cover">
-            <img src="" alt="">
-          </div>
-          <div class="detail">
-            <h2>电影名字</h2>
-            <div class="extra"><span class="score">评分</span> / xxx收藏</div>
-            <div class="extra">2019 / 剧情、爱情</div>
-            <div class="extra">导演：yyy</div>
-            <div class="extra">主演：aaa、bbb、ccc</div>
+            <div class="cover">
+              <img src="" alt="">
+            </div>
+            <div class="detail">
+            <div class="headline">
+              <h2></h2>
+              <div class="extra original_title"></div>
+            </div>
+            <div class="extra"><span class="score"></span><span class="xxx">分</span> / <span class="collect">xxx</span>收藏 </div>
+            <div class="extra"><span class="year">2019</span>年 / <span class="type"></div>
+            <div class="extra">导演：<span class="director">yyy</div>
+            <div class="extra">主演：<span class="actor">aaa、bbb、ccc</span></div>
           </div>
         </a>
       </div>`
@@ -79,6 +82,7 @@
         var $node = $(tmpl)
         fillData($node, '.cover img', '', movie.images.small)
         fillData($node, '.detail h2', movie.title)
+        fillData($node, '.original_title', ` / ${movie.original_title}`)
         fillData($node, '.score', movie.rating.average)
         fillData($node, '.collect', movie.collect_count)
         fillData($node, '.year', movie.year)
