@@ -48,14 +48,14 @@
               <img src="" alt="">
             </div>
             <div class="detail">
-            <div class="headline">
-              <h2></h2>
-              <div class="extra original_title"></div>
-            </div>
-            <div class="extra"><span class="score"></span><span class="xxx">分</span> / <span class="collect">xxx</span>收藏 </div>
-            <div class="extra"><span class="year">2019</span>年 / <span class="type"></div>
-            <div class="extra">导演：<span class="director">yyy</div>
-            <div class="extra">主演：<span class="actor">aaa、bbb、ccc</span></div>
+              <h2>
+                <span class="title"></span>
+                <span class="extra original_title"></span>
+              </h2>
+              <div class="extra"><span class="score"></span><span class="xxx">分</span> / <span class="collect">xxx</span>收藏 </div>
+              <div class="extra"><span class="year">2019</span>年 / <span class="type"></div>
+              <div class="extra">导演：<span class="director">yyy</div>
+              <div class="extra">主演：<span class="actor">aaa、bbb、ccc</span></div>
           </div>
         </a>
       </div>`
@@ -81,7 +81,7 @@
       data.subjects.forEach(movie => {
         var $node = $(tmpl)
         fillData($node, '.cover img', '', movie.images.small)
-        fillData($node, '.detail h2', movie.title)
+        fillData($node, '.detail h2 .title', movie.title)
         fillData($node, '.original_title', ` / ${movie.original_title}`)
         fillData($node, '.score', movie.rating.average)
         fillData($node, '.collect', movie.collect_count)
