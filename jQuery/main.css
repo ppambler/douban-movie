@@ -13,6 +13,38 @@ a {
 
 /* common css, 通用样式，如.layout, .clearfix等，还有通用组件样式，如.btn, .footer等*/
 
+.item {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.item>a {
+  display: flex;
+}
+
+.item .cover, .item .cover img {
+  width: 70px;
+}
+
+.item .detail {
+  flex: 1;
+  padding-left: 10px;
+}
+
+.item .detail h2 {
+  font-size: 16px;
+}
+
+.item .detail .extra {
+  color: #999;
+  margin-top: 4px;
+}
+
+.item .detail .score {
+  color: rgb(250, 140, 140);
+}
+
 /* page css */
 
 /* 第定义基调 */
@@ -21,7 +53,7 @@ body {
   font-size: 12px;
   line-height: 1.2;
   /* 这个背景色用了与编辑器一样的背景色 */
-  background-color: #fffbe8;
+  background-color: rgb(255, 253, 253);
 }
 
 /* 实现footer置底布局 */
@@ -38,4 +70,36 @@ body {
 
 main {
   flex: 1;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+main>section {
+  display: none;
+}
+
+main>section:nth-child(1) {
+  display: block;
+}
+
+footer {
+  display: flex;
+  height: 50px;
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+footer>div {
+  flex: 1;
+  text-align: center;
+  padding-top: 8px;
+  cursor: pointer;
+}
+
+footer .active {
+  color: rgb(250, 140, 140);
+}
+
+footer>div>span {
+  display: block;
 }

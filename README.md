@@ -43,6 +43,8 @@ typora-copy-images-to: img\00
 
 ## ★总结
 
+
+
 ## ★Q&A
 
 ### ①移动端调试？
@@ -109,7 +111,9 @@ typora-copy-images-to: img\00
 
 ![1551695084275](img/00/1551695084275.png)
 
-所以说，viewport就是视口、浏览器窗口的可视区域的意思，注意就包括滚动条的宽度，而且我们可以通过以下代码获取视口大小：
+> 注意：这个模拟的Console也是属于视口的一部分……当然它是绝对定位，脱离文档流的！
+
+所以说，viewport就是视口、浏览器窗口的可视区域的意思，注意这包括滚动条的宽度，而且我们可以通过以下代码获取视口大小：
 
 ```js
 window.innerWidth
@@ -181,7 +185,7 @@ html {
 
 注意：各个浏览器对于宽高的解析也不相同，大家可以自己搜索一下。如 <http://www.webhek.com/post/css-100-percent-height.html>
 
-总之当你对html这个根元素添加 `height:100%`的时候，你通过控制台审查元素会发现，它会撑满这个视口高度区域！
+总之当你对html这个根元素添加 `height:100%`的时候，你通过控制台审查元素会发现，它会撑满这个视口高度区域！至于你之前所说的根元素之上，显然是没有东西了，因为它是根元素啊，不然难道还有土元素？
 
 ![1551719490206](img/00/1551719490206.png)
 
@@ -264,4 +268,163 @@ padding-top相对的是父元素的宽，而不是高……也就是说：
 **➹：**[前端小知识--为什么你写的height:100%不起作用？ - 知其所以然——前端 - SegmentFault 思否](https://segmentfault.com/a/1190000012707337)
 
 **➹：**[javascript - 各浏览器滚动条默认宽度是多少？ - SegmentFault 思否](https://segmentfault.com/q/1010000004817695)
+
+### ④单行文本的字体大小是否是这个盒子的内容高度？
+
+代码： <https://jsbin.com/xeyexay/edit?html,js,output>
+
+```html
+<head>
+    <style>
+        div {
+            width: 100%;
+            height: 100%;
+            background-color: blueviolet;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    	width:100%;height:100%
+    </div>
+</body>
+```
+
+效果：
+
+![1551750351937](img/00/1551750351937.png)
+
+我通过审查元素得知，该盒子的内容高度为21px，而文字的默认大小为16px，而且当我们更换了不同的字体，这个21px还是会变的！
+
+当然，当你对这个盒子设置了行高的话，那么行高的值就是该盒子的最终高度了！
+
+既然如此，那么在没有设置行高之前为啥是21px呢？
+
+因为一款字体会定义一个em-square——用来盛放字符的金属容器。而且这个 em-square 一般被设定为宽高均为 1000 相对单位，不过也可以是 1024、2048 相对单位。
+
+一个字符有一些很重要参考参数：
+
+![img](img/00/v2-7f1590fecc2f79484b22f38e2869d83b_hd.jpg)
+
+如ascender「字母的上半（或下半）出头部分」和descender「下行字母」
+
+有这么一款字体：Catamaran
+
+![img](img/00/v2-8fa5fa46b571db21c79bda208d6263c3_hd.png)
+
+> 注意：不同的系统操作平台（如macOS、Windows……），这些参数可能也会有所不同！
+
+该字体占据了 1100 + 540 个相对单位，尽管它的 em-square 只有 1000 个相对单位，所以当我们设置 font-size:100px 时，这个字体里的文字高度是 164px。而**这个计算出来的高度决定了 HTML 元素的 content-area（内容区域）**，关于 content-area ，你可以认为是 background 作用的区域
+
+注意：这是决定，而不是等于，因为浏览器需要通过它们来计算line-box的值！
+
+> 可见px是个相对单位，而不是绝对单位！
+>
+> 但是当我看了一些回答：
+>
+> **➹：**[【CSS】px是相对单位还是绝对单位？ - 知乎](https://www.zhihu.com/question/67571440)
+>
+> 都说是绝对单位
+>
+> 而这个答案：
+>
+> **➹：**[【CSS】绝对单位和相对单位 - 简书](https://www.jianshu.com/p/80c960ba888b)
+>
+> 说是相对单位哈！
+>
+> 所以你应该去mdn，mdn说什么就是什么：
+>
+> **➹：**[<length> - CSS：层叠样式表 - MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#px)
+>
+> px：与显示设备相关。对于屏幕显示，通常是一个设备像素（点）的显示。
+> 对于打印机和高分辨率的屏幕，一个CSS像素意味着多个设备像素，因此，每英寸的像素的数量保持在96左右。
+>
+> 讲真，没看懂……TMD，你这个单位与显示设备相关，难道还不是相对单位吗？
+>
+> 题外话：用一个4k屏幕去看网页，网页的字显得特别小
+
+其它的一些结论：
+
+**①em 是基于 font-size（100px），而不是基于计算出来的高度（164px）**
+
+![img](img/00/v2-cb05dd4dc6908e522c0f69392ed1fe87_hd.png)
+
+**②line-box 的高度是由它所有子元素的高度计算得出的**。
+
+浏览器会计算这一行里每个子元素的高度，再得出 line-box 的高度（具体来说就是从子元素的最高点到最低点的高度），所以默认情况下，一个 line-box 总是有足够的高度来容纳它的子元素。所以说：**每个 HTML 元素实际上都是一堆 line-box 的容器，如果你知道每个 line-box 的高度，那么你就知道了整个元素的高度。**
+
+![1551754578287](img/00/1551754578287.png)
+
+> 还有存在多个匿名行内元素
+
+有这样一份代码：
+
+```html
+<p>
+    Good design will be better.
+    <span class="a">Ba</span>
+    <span class="b">Ba</span>
+    <span class="c">Ba</span>
+    We get to make a consequence.
+</p>
+```
+
+显示效果：
+
+![img](img/00/line-boxes.png)
+
+解释一波：
+
+1. 黑色实线边框是p元素，白色实线边框是line-boxes的，黑色虚线边框是行内元素和所谓的匿名行内元素的！
+
+2. 我们得到了3个宽度固定的line-box，其中第一行和最后一行各有一个匿名内联元素（文本内容），而中间一行则包含两个匿名内联元素和三个 span。
+
+3. 我们清楚地看到第二个 line-box 比其他两个要高一些。因为第二行里面的子元素因为有一个用到了 Catamaran 字体的 span。显然它的内容区域（164px）要比其它相邻的行内元素要高！
+
+4. 如果我们能看到line-box的高度，显然我们就知道这p元素的高度到底是多少了，然而line-box 的难点在于我们看不见它，而且不能用 CSS 控制它。即使我们用 ::first-line 给第一行加上背景色，我们也看不出第一个 line-box 的高度，即那个一行一行的白色边框。
+
+   或许你会疑问，现在那个图不是看得出line-box的高度吗？——看的出个鬼，这里的字体大小都设置为了100px，其中第二行存在4种字体，其中一种是默认字体，而另外3种字体的字体高度分别是：
+
+   ![img](img/00/font-size-line-height.png)
+
+   所以即便你是默认字体无法得知这些个匿名行内元素是不是100px的高度，因此一个行盒的高度，你是无法确定的，毕竟你无法知道那个164px才是最终答案呀！
+
+   所以「单行文本的字体大小是否是这个盒子的内容高度？」这个问题答案是：
+
+   显然不是，因为这得取决于行盒啊！而行盒高度又会根据匿名行内元素或行内元素来确定，而匿名元素或行内元素的高度则是根据字体的种类来确定的。因此font-size显然只是决定一个匿名行内元素或行内元素的高度的因素之一，毕竟还有一个字体种类啊！
+
+其它的一些结论：
+
+关于line-height：
+
+1. line-box 的高度是根据子元素的高度计算出来的，而不是子元素的 content-area 的高度
+
+2. 一个内联元素有两个高度：content-area 高度和 virtual-area （实际区域？）高度
+
+3. content-area 的高度是由字体度量定义的；vitual-area 的高度就是 line-height，这个高度用于计算 line-box 的高度
+
+   ![img](img/00/line-height.png)
+
+4. 一个长久的谣言：「line-height 表示两个 baseline 之间的距离」。然而在 CSS 里，不是这样的。virtual-area 和 content-area 高度的差异叫做 leading。leading 的一半会被加到 content-area 顶部，另一半会被加到底部。因此 content-area 总是处于 virtual-area 的中间。
+
+**➹：**[深入理解 CSS：字体度量、line-height 和 vertical-align - 知乎](https://zhuanlan.zhihu.com/p/25808995)
+
+**➹：**[张鑫旭_慕课网精英讲师](https://www.imooc.com/t/197450)
+
+
+
+
+
+​	
+
+
+
+
+
+
+
+
+
+
 
