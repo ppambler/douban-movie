@@ -13,6 +13,7 @@ a {
 
 /* common css, 通用样式，如.layout, .clearfix等，还有通用组件样式，如.btn, .footer等*/
 
+/* 电影条目的样式 */
 .item {
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
@@ -49,6 +50,28 @@ a {
 .item .detail .score,
 .xxx {
   color: rgb(250, 140, 140);
+}
+
+/* 加载动画的样式 */
+.loading {
+  padding: 5px;
+  text-align: center;
+  display: none;
+}
+
+.loading .iconfont {
+  display: inline-block;
+  animation: 1s rotate linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* page css */
