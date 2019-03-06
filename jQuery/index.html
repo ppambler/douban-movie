@@ -15,6 +15,7 @@
     <section>
       <div id="top250"></div>
       <div class="loading"><span class="iconfont icon-loading"></span></div>
+      <div class="boxLoading"></div>
     </section>
     <section>tab2</section>
     <section>tab3</section>
@@ -67,12 +68,17 @@
 
     var index = 0
     var isLoading = false
+    var oneLoading = true
     start()
 
     function start() {
       if (isLoading) return
       isLoading = true
-      $('.loading').show()
+      if (oneLoading) {
+        $('.boxLoading').show()
+      } else {
+        $('.loading').show()
+      }
       $.ajax({
         url: 'http://api.douban.com/v2/movie/top250',
         type: 'GET',
@@ -89,6 +95,8 @@
       }).fail(function () {
         console.log('error……')
       }).always(function () {
+        oneLoading = false
+        $('.boxLoading').hide()
         isLoading = false
         $('.loading').hide()
       })
