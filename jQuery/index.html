@@ -41,6 +41,9 @@
       $(this).addClass('active').siblings().removeClass('active')
     })
 
+
+
+
     function template() {
       return `<div class="item">
         <a href="#">
@@ -61,20 +64,36 @@
       </div>`
     }
 
-    $.ajax({
-      url: 'http://api.douban.com/v2/movie/top250',
-      type: 'GET',
-      data: {
-        start: 0,
-        count: 20
-      },
-      dataType: 'jsonp'
-    }).done(function (ret) {
-      console.log(ret)
-      var tmpl = template()
-      setData(ret, tmpl, textNode)
-    }).fail(function () {
-      console.log('error……')
+    var index = 0
+    start()
+
+    function start() {
+      $.ajax({
+        url: 'http://api.douban.com/v2/movie/top250',
+        type: 'GET',
+        data: {
+          start: index,
+          count: 20
+        },
+        dataType: 'jsonp'
+      }).done(function (ret) {
+        console.log(ret)
+        var tmpl = template()
+        setData(ret, tmpl, textNode)
+        index += 10
+      }).fail(function () {
+        console.log('error……')
+      })
+    }
+    $('main').scroll(function () {
+      console.log('我是滚动事件')
+      console.log($('section').eq(0).height())
+      console.log($('main').scrollTop())
+      console.log($('main').height())
+      if ($('section').eq(0).height() - 10 <= $('main').scrollTop() + $('main').height()) {
+        console.log('我执行了吗？')
+        start()
+      }
     })
 
     function setData(data, tmpl, fillData) {

@@ -416,6 +416,56 @@ padding-top相对的是父元素的宽，而不是高……也就是说：
 
 在本地渲染数据的时候，图片请求是403，而当我上传到github上时，图片请求是200……
 
+### ⑥jQuery对象和DOM对象相互转化？
+
+得到DOM对象：
+
+```js
+var btn = document.getElementById(“btnShow”); // btn就是一个DOM对象
+```
+
+得到jQuery对象：
+
+```
+var $btn = $(“#btnShow”); // $btn就是一个jQuery对象
+```
+
+jQuery对象转换为DOM对象：
+
+```
+var btn1 = $btn[0]; //推荐这种姿势 
+var btn2 = $btn.get(0);
+```
+
+测试效果：
+
+![1551838529006](img/00/1551838529006.png)
+
+**➹：**[jquery对象和DOM对象的相互转换 - 简书](https://www.jianshu.com/p/af308135e5b2)
+
+### ⑦为main这个元素绑定scroll事件无法触发？
+
+> 在document视图或者一个element在滚动的时候，会触发元素的`scroll`事件。
+
+适用对象：
+
+1. window对象
+2. 可滚动的frames
+3. CSS overflow属性设置为scroll的元素（或auto时，元素的显示高度小于其内容高度）
+
+测试代码：
+
+<https://jsbin.com/morimuj/1/edit?html,css,js,console,output>
+
+猜测：
+
+1. 难道是因为滚动了body的滚动条？
+2. 难道是……？
+
+结果：
+
+我也不知道为啥突然就可以了……
+
 
 
 ​	

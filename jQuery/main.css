@@ -23,7 +23,8 @@ a {
   display: flex;
 }
 
-.item .cover, .item .cover img {
+.item .cover,
+.item .cover img {
   width: 70px;
 }
 
@@ -45,7 +46,8 @@ a {
   margin-top: 4px;
 }
 
-.item .detail .score, .xxx {
+.item .detail .score,
+.xxx {
   color: rgb(250, 140, 140);
 }
 
@@ -72,6 +74,7 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  /* overflow-y: hidden; */
 }
 
 main {
@@ -80,6 +83,7 @@ main {
   -webkit-overflow-scrolling: touch;
   margin-left: 4px;
   margin-right: 4px;
+  /* 去除横向水平滚动条,在JS中判断是否滑动到底部的一个关键点，17px */
   overflow-x: hidden;
 }
 
