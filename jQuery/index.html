@@ -88,10 +88,11 @@
         },
         dataType: 'jsonp'
       }).done(function (ret) {
+        console.log('我拿到了几次一样的结果？')
         console.log(ret)
         var tmpl = template()
         setData(ret, tmpl, textNode)
-        index += 10
+        index += 20
       }).fail(function () {
         console.log('error……')
       }).always(function () {
@@ -101,15 +102,25 @@
         $('.loading').hide()
       })
     }
+    var clock = null
+
     $('main').scroll(function () {
-      console.log('我是滚动事件')
-      console.log($('section').eq(0).height())
-      console.log($('main').scrollTop())
-      console.log($('main').height())
-      if ($('section').eq(0).height() - 10 <= $('main').scrollTop() + $('main').height()) {
-        console.log('我执行了吗？')
-        start()
+      // console.log('我是滚动事件')
+      // console.log($('section').eq(0).height())
+      // console.log($('main').scrollTop())
+      // console.log($('main').height())
+      if (clock) {
+        clearTimeout(clock)
       }
+      clock = setTimeout(function () {
+        console.log('我是定时里的回调')
+        if ($('section').eq(0).height() - 10 <= $('main').scrollTop() + $('main').height()) {
+          console.log('我执行了吗？')
+          start()
+          clock = null
+        }
+      }, 300)
+
     })
 
     function setData(data, tmpl, fillData) {
