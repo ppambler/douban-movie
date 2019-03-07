@@ -14,6 +14,7 @@ a {
 /* common css, 通用样式，如.layout, .clearfix等，还有通用组件样式，如.btn, .footer等*/
 
 /* 电影条目的样式 */
+
 .item {
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
@@ -24,8 +25,7 @@ a {
   display: flex;
 }
 
-.item .cover,
-.item .cover img {
+.item .cover, .item .cover img {
   width: 70px;
 }
 
@@ -47,12 +47,12 @@ a {
   margin-top: 4px;
 }
 
-.item .detail .score,
-.xxx {
+.item .detail .score, .xxx {
   color: rgb(250, 140, 140);
 }
 
 /* 加载动画的样式 */
+
 .loading {
   padding: 5px;
   text-align: center;
@@ -68,13 +68,13 @@ a {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
 }
 
 /* 另外一个动画 */
+
 .boxLoading {
   width: 50px;
   height: 50px;
@@ -116,32 +116,25 @@ a {
   17% {
     border-bottom-right-radius: 3px;
   }
-
   25% {
     transform: translateY(9px) rotate(22.5deg);
   }
-
   50% {
     transform: translateY(18px) scale(1, 0.9) rotate(45deg);
     border-bottom-right-radius: 40px;
   }
-
   75% {
     transform: translateY(9px) rotate(67.5deg);
   }
-
   100% {
     transform: translateY(0) rotate(90deg);
   }
 }
 
 @keyframes shadow {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: scale(1, 1);
   }
-
   50% {
     transform: scale(1.2, 1);
   }
@@ -170,17 +163,17 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  /* overflow-y: hidden; */
+  overflow-y: hidden;
 }
 
-main {
+main>section {
   height: calc(100vh - 50px);
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
   margin-left: 4px;
   margin-right: 4px;
   /* 去除横向水平滚动条,在JS中判断是否滑动到底部的一个关键点，17px */
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 main>section {
