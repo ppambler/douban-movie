@@ -102,24 +102,41 @@
         $('.loading').hide()
       })
     }
-    var clock = null
+    // var clock = null
 
+    // $('main').scroll(function () {
+    //   // console.log('我是滚动事件')
+    //   // console.log($('section').eq(0).height())
+    //   // console.log($('main').scrollTop())
+    //   // console.log($('main').height())
+    //   if (clock) {
+    //     clearTimeout(clock)
+    //   }
+    //   clock = setTimeout(function () {
+    //     console.log('我是定时里的回调')
+    //     if ($('section').eq(0).height() - 10 <= $('main').scrollTop() + $('main').height()) {
+    //       console.log('我执行了吗？')
+    //       start()
+    //       clock = null
+    //     }
+    //   }, 300)
+
+    // })
+    var cd = false
     $('main').scroll(function () {
-      // console.log('我是滚动事件')
-      // console.log($('section').eq(0).height())
-      // console.log($('main').scrollTop())
-      // console.log($('main').height())
-      if (clock) {
-        clearTimeout(clock)
+      if (cd) {
+        console.log('正在CD中')
+      } else {
+        cd = true
+        var timerId = setTimeout(() => {
+          console.log('我是定时器里的回调')
+          if ($('section').eq(0).height() - 10 <= $('main').scrollTop() + $('main').height()) {
+            console.log('我执行了吗？')
+            start()
+          }
+          cd = false
+        }, 300);
       }
-      clock = setTimeout(function () {
-        console.log('我是定时里的回调')
-        if ($('section').eq(0).height() - 10 <= $('main').scrollTop() + $('main').height()) {
-          console.log('我执行了吗？')
-          start()
-          clock = null
-        }
-      }, 300)
 
     })
 

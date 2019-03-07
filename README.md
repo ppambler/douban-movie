@@ -570,6 +570,8 @@ $('main').scroll(function () {
 
 **➹：**[轻松理解JS函数节流和函数防抖 - 掘金](https://juejin.im/post/5a35ed25f265da431d3cc1b1)
 
+**➹：**[[JavaScript] 函数节流与去抖 · Issue #5 · hahnzhu/read-code-per-day](https://github.com/hahnzhu/read-code-per-day/issues/5)
+
 
 
 
