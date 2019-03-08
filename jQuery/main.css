@@ -192,7 +192,7 @@ main>section:nth-child(1) {
 
 #search .wrap {
   margin-top: 10px;
-  margin-right: 5px;
+  /* margin-right: 5px; */
 }
 
 section .search-area {
@@ -216,7 +216,7 @@ section .search-area .button {
   position: absolute;
   right: 0;
   padding: 8px 10px;
-  background: #FF5722;
+  background: rgb(250, 140, 140);
   color: #fff;
   border-radius: 2px;
   cursor: pointer;

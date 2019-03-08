@@ -150,10 +150,43 @@ var Top250 = {
     })
   }
 }
+
+var UsBoard = {
+  init: function () {
+    var _this = this
+    this.$container = $('#beimei')
+    this.$content = this.$container.find('.container')
+    this.getData(function (data) {
+      _this.renderData(data)
+    })
+  },
+  getData: function (callback) {
+    $.ajax({
+      url: '//api.douban.com/v2/movie/us_box',
+      data: {
+        start: 0,
+        count: 10
+      },
+      dataType: 'jsonp'
+    }).done(function (ret) {
+      callback(ret)
+    })
+  },
+  renderData(data) {
+    var _this = this
+    console.log(data)
+    data.subjects.forEach(function (item) {
+      var $node = Helpers.createNode.start(item.subject)
+      _this.$content.append($node)
+    })
+  }
+}
+
 var App = {
   init: function () {
     Paging.init()
     Top250.init()
+    UsBoard.init()
   }
 }
 
