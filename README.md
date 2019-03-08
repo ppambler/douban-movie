@@ -604,11 +604,19 @@ $('main').scroll(function () {
 
 你得这样判断  `e.key === 'Enter' || e.keyCode === 13`
 
+**➹：**[HTML键盘Enter(回车)事件绑定-yellowcong - yelllowcong的专栏 - CSDN博客](https://blog.csdn.net/yelllowcong/article/details/77033048)
+
+
+
 ### ⑬判断一个元素有没有子节点？以及如何清空元素的子节点？
 
 使用jQuery姿势：
 
 看看这个jQuery化 的DOM对象的length是否大于0；使用empty()即可清空元素的子节点。
+
+**➹：**[jquery 判断元素下是不是有子元素 - 彻底拆分，一切可控！ - CSDN博客](https://blog.csdn.net/tengdazhang770960436/article/details/39004719)
+
+**➹：**[jQuery删除/清空指定元素下的所有子节点的方法 - 飞鸟慕鱼博客](https://www.feiniaomy.com/post/134.html)
 
 ⑭⑮⑯⑰⑱⑲⑳
 
