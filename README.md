@@ -600,7 +600,17 @@ $('main').scroll(function () {
 
 **➹：**[chrome怎样查看一个元素绑定的事件？ - m0_37158404的博客 - CSDN博客](https://blog.csdn.net/m0_37158404/article/details/83088800)
 
-⑫⑬⑭⑮⑯⑰⑱⑲⑳
+### ⑫键盘上有两个Enter?
+
+你得这样判断  `e.key === 'Enter' || e.keyCode === 13`
+
+### ⑬判断一个元素有没有子节点？以及如何清空元素的子节点？
+
+使用jQuery姿势：
+
+看看这个jQuery化 的DOM对象的length是否大于0；使用empty()即可清空元素的子节点。
+
+⑭⑮⑯⑰⑱⑲⑳
 
 
 
