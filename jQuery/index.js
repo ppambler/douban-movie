@@ -196,6 +196,10 @@ var Search = {
     var _this = this
     this.$container.find('.search-area .button').on('click', function () {
       console.log('click ')
+      console.log(this.$content)
+      if (_this.$content.length > 0) {
+        _this.$content.empty()
+      }
       _this.getData(function (data) {
         console.log(data)
         _this.renderData(data)
@@ -204,6 +208,9 @@ var Search = {
     console.log(this.$container.find('.search-area input'))
     this.$container.find('.search-area input').on('keyup', function (e) {
       if (e.key === 'Enter' || e.keyCode === 13) {
+        if (_this.$content.length > 0) {
+          _this.$content.empty()
+        }
         _this.getData(function (data) {
           _this.renderData(data)
         })
