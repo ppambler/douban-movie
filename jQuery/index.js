@@ -27,33 +27,27 @@ var Helpers = {
         </a>
       </div>`
     },
-    fillData: function (selector, textData, srcData) {
-      if (arguments[1] !== '') {
-        this.$template.find(selector).text(textData)
-      } else {
-        // console.log(this.$template)
-        this.$template.find(selector).attr('src', srcData)
-      }
-    },
     setData: function (movie) {
       var $node = this.$template
       // console.log($node[0])
-      var img = movie.images.small.replace(/http:|https:/, '')
-      this.fillData('.cover img', '', img)
-      this.fillData('.detail h2 .title', movie.title)
-      this.fillData('.original_title', ` / ${movie.original_title}`)
-      this.fillData('.score', movie.rating.average)
-      this.fillData('.collect', movie.collect_count)
-      this.fillData('.year', movie.year)
-      this.fillData('.type', movie.genres.join(' / '))
-      this.fillData('.director', () => {
+      console.log(movie.images.medium)
+      var img = movie.images.medium.replace(/http:|https:/, '')
+      $node.find('a').attr('href', movie.alt)
+      $node.find('.cover img').attr('src', img)
+      $node.find('.detail h2 .title').text(movie.title)
+      $node.find('.original_title').text(` / ${movie.original_title}`)
+      $node.find('.score').text(movie.rating.average)
+      $node.find('.collect').text(movie.collect_count)
+      $node.find('.year').text(movie.year)
+      $node.find('.type').text(movie.genres.join(' / '))
+      $node.find('.director').text(() => {
         var directorsArr = []
         movie.directors.forEach((item) => {
           directorsArr.push(item.name)
         })
         return directorsArr.join('、')
       })
-      this.fillData('.actor', () => {
+      $node.find('.actor').text(() => {
         var actorArr = []
         movie.casts.forEach((item) => {
           actorArr.push(item.name)
