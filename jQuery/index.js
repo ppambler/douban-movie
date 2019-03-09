@@ -38,7 +38,7 @@ var Helpers = {
     setData: function (movie) {
       var $node = this.$template
       // console.log($node[0])
-      var img = movie.images.small.replace(/http:|https:/, 'https:')
+      var img = movie.images.small.replace(/http:|https:/, '')
       this.fillData('.cover img', '', img)
       this.fillData('.detail h2 .title', movie.title)
       this.fillData('.original_title', ` / ${movie.original_title}`)
@@ -127,7 +127,7 @@ var Top250 = {
       this.$container.find('.loading').show(400)
     }
     $.ajax({
-      url: 'http://api.douban.com/v2/movie/top250',
+      url: '//api.douban.com/v2/movie/top250',
       data: {
         start: this.count * this.page,
         count: this.count
@@ -237,7 +237,7 @@ var Search = {
     var keyword = this.$container.find('.search-area input').val()
     this.isLoading = true
     $.ajax({
-      url: 'http://api.douban.com/v2/movie/search',
+      url: '//api.douban.com/v2/movie/search',
       data: {
         q: keyword
       },
