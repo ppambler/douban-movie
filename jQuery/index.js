@@ -38,7 +38,8 @@ var Helpers = {
     setData: function (movie) {
       var $node = this.$template
       // console.log($node[0])
-      this.fillData('.cover img', '', movie.images.small)
+      var img = movie.images.small.replace(/http:|https:/, '')
+      this.fillData('.cover img', '', img)
       this.fillData('.detail h2 .title', movie.title)
       this.fillData('.original_title', ` / ${movie.original_title}`)
       this.fillData('.score', movie.rating.average)

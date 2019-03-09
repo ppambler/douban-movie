@@ -618,7 +618,21 @@ $('main').scroll(function () {
 
 **➹：**[jQuery删除/清空指定元素下的所有子节点的方法 - 飞鸟慕鱼博客](https://www.feiniaomy.com/post/134.html)
 
-⑭⑮⑯⑰⑱⑲⑳
+### ⑭如何去掉图片的http/https?
+
+> 部署到github上，然后测试这个网页是否能正常运行，结果出现https与httph混合的问题，导致某些图片无法加载，而我测试图片 `//……`，这样也能正常显示的……所以就得用正则去掉，但是我不会写呀
+
+![1552101082416](img/00/1552101082416.png)
+
+**➹：**[正则表达式去掉URL中的(http-https-ftp-rtsp-mms)-CSDN论坛](https://bbs.csdn.net/topics/90153811)
+
+
+
+
+
+
+
+⑮⑯⑰⑱⑲⑳
 
 
 
