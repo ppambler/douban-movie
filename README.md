@@ -46,6 +46,10 @@ typora-copy-images-to: img\00
 - [x] 每次搜索能不能清空上次搜索的结果？（判断填充内容的容器是否有子节点，有那就清空，然后再发请求……）
 - [ ] 如果搜索没有找到结果呢？那么该提示什么内容给用户看呢？
 
+## ★bug
+
+- [x] 关于http和https请求混合的问题（注意图片的请求，ajax请求，以及第三方库资源的请求，它们都最好用的是  `//`）
+
 ## ★总结
 
 - 关于对事件添加回调，这个回调还是不要用箭头函数……因为我们一般都是要被点击的那个元素……如果你想要那个容纳属性的那个对象，那就定义一个 `_this`就好了……
@@ -625,6 +629,8 @@ $('main').scroll(function () {
 ![1552101082416](img/00/1552101082416.png)
 
 **➹：**[正则表达式去掉URL中的(http-https-ftp-rtsp-mms)-CSDN论坛](https://bbs.csdn.net/topics/90153811)
+
+**➹：**[关于启用 HTTPS 的一些经验分享（三） - JerryQu 的小站](https://imququ.com/post/sth-about-switch-to-https-3.html)
 
 
 

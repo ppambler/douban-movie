@@ -38,7 +38,7 @@ var Helpers = {
     setData: function (movie) {
       var $node = this.$template
       // console.log($node[0])
-      var img = movie.images.small.replace(/http:|https:/, '')
+      var img = movie.images.small.replace(/http:|https:/, 'https:')
       this.fillData('.cover img', '', img)
       this.fillData('.detail h2 .title', movie.title)
       this.fillData('.original_title', ` / ${movie.original_title}`)
@@ -232,7 +232,7 @@ var Search = {
     })
   },
   getData: function (callback) {
-    this.$container.find('.loading').show(400)
+    this.$container.find('.loading').show()
     var _this = this
     var keyword = this.$container.find('.search-area input').val()
     this.isLoading = true
@@ -243,13 +243,18 @@ var Search = {
       },
       dataType: 'jsonp'
     }).done(function (ret) {
-      _this.$container.find('.loading').hide(400)
+      _this.$container.find('.loading').hide()
       _this.isLoading = false
       callback(ret)
     })
   },
   renderData(data) {
     var _this = this
+    // debugger
+    if (data.total === 0) {
+      var result = '<div class="notfound">没找着，请重新输入……</div>'
+      _this.$content.append(result).show()
+    }
     data.subjects.forEach(function (item) {
       var $node = Helpers.createNode.start(item)
       _this.$content.append($node)
