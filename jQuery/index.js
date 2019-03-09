@@ -38,7 +38,7 @@ var Helpers = {
     setData: function (movie) {
       var $node = this.$template
       // console.log($node[0])
-      var img = movie.images.small.replace(/http:|https:/, 'https:')
+      var img = movie.images.small.replace(/http:|https:/, '')
       this.fillData('.cover img', '', img)
       this.fillData('.detail h2 .title', movie.title)
       this.fillData('.original_title', ` / ${movie.original_title}`)

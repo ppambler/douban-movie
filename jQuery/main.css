@@ -163,7 +163,6 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  overflow-y: hidden;
 }
 
 main>section {
@@ -172,8 +171,6 @@ main>section {
   -webkit-overflow-scrolling: touch;
   margin-left: 4px;
   margin-right: 4px;
-  /* 去除横向水平滚动条,在JS中判断是否滑动到底部的一个关键点，17px */
-  overflow-x: hidden;
 }
 
 main>section {

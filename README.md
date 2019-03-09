@@ -586,6 +586,8 @@ $('main').scroll(function () {
 
 这两个API的配合让我觉得点了一个tab之后，再次点的话会无效哈（其实还是触发了点击事件）……
 
+**➹：**[深入学习jQuery的三种常见动画效果 - 小火柴的蓝色理想 - 博客园](https://www.cnblogs.com/xiaohuochai/p/5932616.html)
+
 ### ⑪如何查看一个元素能否绑定某些事件（如scroll）?
 
 > 再次遇到scroll事件无法触发的bug！看来我得去看看高程3关于事件的那章……
