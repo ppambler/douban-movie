@@ -251,7 +251,7 @@ var Search = {
     var _this = this
     // debugger
     if (data.total === 0) {
-      var result = '<div class="notfound">没找着，请重新输入……</div>'
+      var result = '<div class="notfound">没找着，那就重新输入吧……</div>'
       _this.$content.append(result).show()
     }
     data.subjects.forEach(function (item) {

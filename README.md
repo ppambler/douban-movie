@@ -22,6 +22,10 @@ typora-copy-images-to: img\00
 
 ## ★效果
 
+扫描二维码，于手机上查看效果：
+
+![img](img/00/6cca52a8c230c0e82a2a1c71cb6b4fc3.png)
+
 
 
 ## ★涉及技术
@@ -51,6 +55,7 @@ typora-copy-images-to: img\00
 
 - [x] 关于http和https请求混合的问题（注意图片的请求，ajax请求，以及第三方库资源的请求，它们都最好用的是  `//`）
 - [x] 重新输入搜索，回导致start请求参数，会接着上一次请求的start参数来（清空元素后，顺便把start归零）
+- [ ] 在QQ浏览器上浏览，那个底部tab有样式bug……
 
 ## ★总结
 
@@ -663,6 +668,10 @@ $('main').scroll(function () {
 **➹：**[如何隐藏来源页地址？referer-policy 对比讲解](https://newsn.net/say/referer-policy.html)
 
 ### ⑯如何实现前端路由？
+
+**➹：**[前端路由是什么东西？ - 知乎](https://www.zhihu.com/question/53064386)
+
+**➹：**[SME-FE/sme-router: A lightweight router lib that implement with express route style](https://github.com/SME-FE/sme-router/tree/master)
 
 
 

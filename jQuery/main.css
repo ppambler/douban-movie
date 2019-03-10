@@ -161,8 +161,8 @@ body {
   position: relative;
   /* 如果是min-height的话则无法让footer固定定位了 */
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
 }
 
 main>section {
@@ -222,6 +222,7 @@ section .search-area .button {
 .notfound {
   text-align: center;
   margin-top: 10px;
+  color: #9e9e9e;
 }
 
 /* footer的样式 */
