@@ -177,6 +177,62 @@ var UsBoard = {
   }
 }
 
+var Theaters = {
+  init: function () {
+    this.$container = $('#in-theaters')
+    this.$content = this.$container.find('.container')
+    this.page = 0
+    this.count = 10
+    this.isFinshed = false
+    this.isLoading = false
+    this.bind()
+    this.getData((data) => {
+      this.renderData(data)
+      this.page++
+    })
+  },
+  bind: function () {
+    var _this = this
+    console.log(_this)
+    this.$container.on('scroll', function () {
+      console.log(_this.isLoading)
+      if (Helpers.isToBottom(_this.$container, _this.$content) && !_this.isFinshed && !_this.isLoading) {
+        console.log('to bottom')
+        _this.getData(function (data) {
+          _this.renderData(data)
+          _this.page++
+          if (_this.page * _this.count > data.total) {
+            _this.isFinshed = true
+          }
+        })
+      }
+    })
+  },
+  getData: function (callback) {
+    this.isLoading = true
+    this.$container.find('.loading').show(400)
+    $.ajax({
+      url: '//api.douban.com/v2/movie/in_theaters',
+      data: {
+        start: this.count * this.page,
+        count: this.count
+      },
+      dataType: 'jsonp'
+    }).done((ret) => {
+      this.isLoading = false
+      this.$container.find('.loading').hide(400)
+      callback(ret)
+    })
+  },
+  renderData(data) {
+    data.subjects.forEach((item) => {
+      var $node = Helpers.createNode.start(item)
+      this.$content.append($node)
+    })
+  }
+
+}
+
 var Search = {
   init: function () {
     this.page = 0
@@ -265,6 +321,7 @@ var App = {
     Paging.init()
     Top250.init()
     UsBoard.init()
+    Theaters.init()
     Search.init()
   }
 }
