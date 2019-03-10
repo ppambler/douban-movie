@@ -208,6 +208,7 @@ var Search = {
         }
         _this.getData(function (data) {
           _this.renderData(data)
+          _this.page++
         })
       }
     })
@@ -233,7 +234,9 @@ var Search = {
     $.ajax({
       url: '//api.douban.com/v2/movie/search',
       data: {
-        q: keyword
+        q: keyword,
+        start: this.count * this.page,
+        count: this.count
       },
       dataType: 'jsonp'
     }).done(function (ret) {
