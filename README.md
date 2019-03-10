@@ -50,6 +50,7 @@ typora-copy-images-to: img\00
 ## ★bug
 
 - [x] 关于http和https请求混合的问题（注意图片的请求，ajax请求，以及第三方库资源的请求，它们都最好用的是  `//`）
+- [x] 重新输入搜索，回导致start请求参数，会接着上一次请求的start参数来（清空元素后，顺便把start归零）
 
 ## ★总结
 

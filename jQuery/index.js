@@ -205,6 +205,8 @@ var Search = {
       if (e.key === 'Enter' || e.keyCode === 13) {
         if (_this.$content.length > 0) {
           _this.$content.empty()
+          _this.page = 0
+          console.log(_this.page)
         }
         _this.getData(function (data) {
           _this.renderData(data)
