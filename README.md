@@ -634,13 +634,39 @@ $('main').scroll(function () {
 
 **➹：**[关于启用 HTTPS 的一些经验分享（三） - JerryQu 的小站](https://imququ.com/post/sth-about-switch-to-https-3.html)
 
+### ⑮为啥图片总是无法显示？⑤问题显然是理解错了……
+
+没有这个之前：
+
+```html
+<meta name="referrer" content="never">
+```
+
+![1552203988168](img/00/1552203988168.png)
+
+有了它之后：
+
+![1552204086100](img/00/1552204086100.png)
+
+总之，有了它之后就可以隐藏来源页地址了
+
+注意，千万不要弄成是 `nerver`值……还有就是你得留意图片的缓存问题，以及针对github项目预览时，有过添加cname，然后又删除，导致dns缓存的问题，所以你得清楚dns缓存
+
+地址：<chrome://net-internals/#dns>
+
+![1552204553028](img/00/1552204553028.png)
+
+**➹：**[provisional headers are shown 知多少 - 掘金](https://juejin.im/post/5c00980751882518805add83)
+
+**➹：**[如何隐藏来源页地址？referer-policy 对比讲解](https://newsn.net/say/referer-policy.html)
 
 
 
 
 
 
-⑮⑯⑰⑱⑲⑳
+
+⑯⑰⑱⑲⑳
 
 
 
